@@ -1,0 +1,42 @@
+## Here is an example for Python.
+
+syntax godot "\.gd$"
+header "^#!.*godot"
+magic "GDScript"
+comment "#"
+
+linter pyflakes
+
+# Function definitions.
+color brightblue "def [0-9A-Za-z_]+"
+# Keywords.
+color brightcyan "\<(and|as|class|func)\>"
+color brightred "\<(del|elif|if|else|except|finally|for|continue|break|await|async|assert|var)\>"
+color brightcyan "\<(global|import|in|is|lambda|nonlocal|not|or|from|try|while|export)\>"
+color brightred "\<(pass|raise|return|with|yield|extend)\>"
+
+color brightred "\<(\=|\:\=)\>"
+
+# These two are keywords in Python 2, but functions in Python 3,
+# so only color them when they are followed by whitespace, assuming
+# that print(x) is a function invocation and print (x) is a statement.
+color brightcyan "\<(exec|print)([[:blank:]]|$)"
+
+# Special values.
+color brightmagenta "\<(False|None|True)\>"
+
+# Mono-quoted strings.
+color brightyellow "'([^'\]|\\.)*'|'''"
+color brightyellow ""([^"\]|\\.)*"|""""
+color normal "'''|""""
+# Comments.
+color brightgreen "(^|[[:blank:]])#.*"
+# Triple-quoted strings.
+color brightgreen    start="'''([^'),]|$)" end="(^|[^(\])'''"
+color brightgreen    start=""""([^"),]|$)" end="(^|[^(\])""""
+
+# Reminders.
+color brightwhite,yellow "(FIXME|TODO|XXX)"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"

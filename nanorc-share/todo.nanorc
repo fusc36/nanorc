@@ -1,0 +1,27 @@
+# todo
+
+syntax todo "\.todo$"
+
+
+# Cursor
+color black,yellow "^ >"
+color black,yellow "^-+>"
+color black,yellow "^=+>"
+
+# Headers
+color green "^>.*<$"
+color red "^=.*=$"
+
+# Time
+color yellow "\<(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\>"
+color yellow "[0-9]+:[0-9]+"
+color yellow "[0-9]+/[0-9]+"
+
+# Done
+color ,red ">.+DONE$"
+color ,green ">.+URGENT$"
+
+# Markers
+color cyan ">>"
+color cyan "<<"
+

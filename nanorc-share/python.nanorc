@@ -1,0 +1,63 @@
+## Here is an example for Python.
+
+syntax python "\.py$"
+header "^#!.*python"
+magic "Python script"
+comment "#"
+
+linter pyflakes
+
+# Class Colors
+color cyan "class [0-9A-Za-z_]+"
+color yellow "-> [0-9A-Za-z_]+"
+
+# Function variables.
+color yellow "[^()]+\(([0-9A-Za-z\,_\(\)[:space:]]+)\):"
+color brightred "[[:space:],\(]\*[0-9A-Za-z_]+[[:space:],\)]"
+color brightred "[[:space:],\(]\*\*[0-9A-Za-z_]+[[:space:],\)]"
+color cyan "[0-9A-Za-z_]+\("
+color white "\("
+color white "\)"
+color white ","
+color white ":"
+color white "->"
+color brightred "\<(self|cls)\>"
+
+# Function definitions.
+color brightblue "def [0-9A-Za-z_]+"
+
+# Keywords.
+color brightcyan "\<(and|as|class|def)\>"
+color red "\<(del|elif|if|else|except|finally|for|continue|break|await|async|assert)\>"
+color brightcyan "\<(global|import|in|is|lambda|nonlocal|not|or|from|try|while)\>"
+color red "\<(pass|raise|return|with|yield)\>"
+
+# These two are keywords in Python 2, but functions in Python 3,
+# so only color them when they are followed by whitespace, assuming
+# that print(x) is a function invocation and print (x) is a statement.
+color brightcyan "\<(exec|print)([[:blank:]]|$)"
+
+# Special values.
+color brightmagenta "\<(False|None|True)\>"
+
+# Decorators
+color magenta "@.+$"
+
+# Mono-quoted strings.
+color brightyellow "'([^'\]|\\.)*'|'''"
+color brightyellow ""([^"\]|\\.)*"|""""
+color normal "'''|""""
+# Comments.
+color brightgreen "(^|[[:blank:]])#.*"
+# Triple-quoted strings.
+color brightgreen    start="'''([^'),]|$)" end="(^|[^(\])'''"
+color brightgreen    start=""""([^"),]|$)" end="(^|[^(\])""""
+
+# Reminders.
+color brightwhite,red "\#[:space:]*(FIXME|TODO|XXX|NOTE).*$"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
+
+# Alerts
+color ,red "\#[:space:]*ALERT.*$"
